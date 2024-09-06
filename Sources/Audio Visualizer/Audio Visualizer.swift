@@ -104,8 +104,10 @@ public struct AudioVisualizerView: View {
             Text(song ?? fileName)
                 .font(.title2)
                 .lineLimit(1)
+                .animation(.default, value: song)
             
             Text(artist ?? "Unknown Artist")
+                .animation(.default, value: artist)
             
             HStack(spacing: 40) {
                 Button {
