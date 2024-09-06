@@ -8,10 +8,12 @@ public struct AudioVisualizerView: View {
     
     private let url: URL
     private let fileName: String
+    private let image: Image
     
-    public init(_ url: URL, fileName: String) {
+    public init(_ url: URL, fileName: String, image: Image) {
         self.url = url
         self.fileName = fileName
+        self.image = image
         
         self.vm = .init(url)
     }
@@ -138,26 +140,30 @@ public struct AudioVisualizerView: View {
     }
     
     var backgroundPicture: some View {
-        Group {
-            if let artwork = Bundle.main.url(forResource: "artwork", withExtension: "PNG"),
-               let image = UIImage(contentsOfFile: artwork.path) {
-                Image(uiImage: image)
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .padding()
-            } else {
-                Color.clear
-                    .padding()
+        /// Doesn't work
+        
+        //        Group {
+        //            if let artwork = Bundle.main.url(forResource: "artwork", withExtension: "PNG"),
+        //               let image = UIImage(contentsOfFile: artwork.path) {
+        //                Image(uiImage: image)
+        //                    .resizable()
+        //                    .aspectRatio(contentMode: .fit)
+        //                    .padding()
+        //            } else {
+        //                Color.clear
+        //                    .padding()
+        //            }
+        //        }
+        
+        image
+            .overlay {
+                LinearGradient(
+                    colors: [.clear, .black],
+                    startPoint: .center,
+                    endPoint: .bottom
+                )
             }
-        }
-        .overlay {
-            LinearGradient(
-                colors: [.clear, .black],
-                startPoint: .center,
-                endPoint: .bottom
-            )
-        }
-        .ignoresSafeArea()
+            .ignoresSafeArea()
     }
     
     func updateData(_: Date) {
