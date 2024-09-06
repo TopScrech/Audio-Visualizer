@@ -1,18 +1,15 @@
 import SwiftUI
 import Charts
+import AVFoundation
 
 @available(iOS 17, *)
 public struct AudioVisualizerView: View {
     @State private var vm: AudioProcessingVM
     
     private let url: URL
-    private let name: String
-    private let artist: String
     
-    public init(_ url: URL, name: String, artist: String) {
+    public init(_ url: URL) {
         self.url = url
-        self.name = name
-        self.artist = artist
         
         self.vm = .init(url)
     }
@@ -22,6 +19,9 @@ public struct AudioVisualizerView: View {
         on: .main,
         in: .common
     ).autoconnect()
+
+    @State var song: String?
+    @State var artist: String?
     
     @State private var isPlaying = false
     @State private var data: [Float] = Array(repeating: 0, count: Constants.barAmount)
@@ -69,10 +69,28 @@ public struct AudioVisualizerView: View {
             .shadow(radius: 40)
             .padding()
         }
+        .task {
+            fetchSongAndArtist(url)
+        }
         .background {
             backgroundPicture
         }
         .preferredColorScheme(.dark)
+    }
+    
+    private func fetchSongAndArtist(_ url: URL) {
+        let asset = AVAsset(url: url)
+        let metadata = asset.metadata
+        
+        for item in metadata {
+            if let commonKey = item.commonKey?.rawValue {
+                if commonKey == AVMetadataKey.commonKeyTitle.rawValue {
+                    song = item.stringValue
+                } else if commonKey == AVMetadataKey.commonKeyArtist.rawValue {
+                    artist = item.stringValue
+                }
+            }
+        }
     }
     
     var playerControls: some View {
@@ -81,11 +99,11 @@ public struct AudioVisualizerView: View {
             //                .tint(.secondary)
             //                .padding(.vertical)
             
-            Text(name)
+            Text(song ?? "Unknown Song")
                 .font(.title2)
                 .lineLimit(1)
             
-            Text(artist)
+            Text(artist ?? "Unknown Artist")
             
             HStack(spacing: 40) {
                 Button {
