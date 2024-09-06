@@ -5,9 +5,6 @@ import PackageDescription
 
 let package = Package(
     name: "AudioVisualizer",
-    platforms: [
-        .iOS(.v17)
-    ],
     products: [
         .library(
             name: "AudioVisualizer",
