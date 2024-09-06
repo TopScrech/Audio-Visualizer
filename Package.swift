@@ -10,11 +10,11 @@ let package = Package(
     ],
     products: [
         .library(
-            name: "Audio Visualizer",
-            targets: ["Audio Visualizer"]),
+            name: "AudioVisualizer",
+            targets: ["AudioVisualizer"]),
     ],
     targets: [
         .target(
-            name: "Audio Visualizer"),
+            name: "AudioVisualizer"),
     ]
 )
