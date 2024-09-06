@@ -21,7 +21,7 @@ public struct AudioVisualizerView: View {
         on: .main,
         in: .common
     ).autoconnect()
-
+    
     @State var song: String?
     @State var artist: String?
     
@@ -138,20 +138,16 @@ public struct AudioVisualizerView: View {
     }
     
     var backgroundPicture: some View {
-        AsyncImage(
-            url: URL(
-                string: "https://upload.wikimedia.org/wikipedia/commons/6/6f/Beethoven.jpg"
-            ),
-            transaction: Transaction(animation: .easeOut(duration: 1))
-        ) { phase in
-            switch phase {
-            case .success(let image):
-                image
+        Group {
+            if let artwork = Bundle.main.url(forResource: "artwork", withExtension: "png"),
+               let image = UIImage(contentsOfFile: artwork.path) {
+                Image(uiImage: image)
                     .resizable()
-                    .scaledToFill()
-                
-            default:
+                    .aspectRatio(contentMode: .fit)
+                    .padding()
+            } else {
                 Color.clear
+                    .padding()
             }
         }
         .overlay {
