@@ -139,8 +139,8 @@ public struct AudioVisualizerView: View {
     
     var backgroundPicture: some View {
         Group {
-            if let artwork = Bundle.main.url(forResource: "artwork", withExtension: "png"),
-               let image = UIImage(contentsOfFile: artwork.path) {
+            if let bundle = Bundle(for: type(of: self)).url(forResource: "artwork", withExtension: "png"),
+               let image = UIImage(contentsOfFile: bundle.path) {
                 Image(uiImage: image)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
