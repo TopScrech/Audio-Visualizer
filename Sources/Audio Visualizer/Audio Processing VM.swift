@@ -54,7 +54,6 @@ final class AudioProcessingVM {
             player.scheduleFile(audioFile, at: nil)
             player.play()
         } else {
-            player.stop()
             player.scheduleFile(audioFile, at: nil)
         }
     }
