@@ -76,10 +76,12 @@ public struct AudioVisualizerView: View {
         .task {
             fetchSongAndArtist(url)
         }
+        .onDisappear {
+            vm.player.stop()
+        }
         .background {
             backgroundPicture
         }
-        .preferredColorScheme(.dark)
     }
     
     private func fetchSongAndArtist(_ url: URL) {
@@ -163,7 +165,6 @@ public struct AudioVisualizerView: View {
                     endPoint: .bottom
                 )
             }
-            .ignoresSafeArea()
     }
     
     func updateData(_: Date) {
