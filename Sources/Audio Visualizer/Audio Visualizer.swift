@@ -2,14 +2,14 @@ import SwiftUI
 import Charts
 
 @available(iOS 17, *)
-struct AudioVisualizerView: View {
+public struct AudioVisualizerView: View {
     @State private var vm: AudioProcessingVM
     
     private let url: URL
     private let name: String
     private let artist: String
     
-    init(_ url: URL, name: String, artist: String) {
+    public init(_ url: URL, name: String, artist: String) {
         self.url = url
         self.name = name
         self.artist = artist
@@ -29,7 +29,7 @@ struct AudioVisualizerView: View {
             Float.random(in: 1...Constants.magnitudeLimit)
         }
     
-    var body: some View {
+    public var body: some View {
         VStack {
             Spacer()
             
