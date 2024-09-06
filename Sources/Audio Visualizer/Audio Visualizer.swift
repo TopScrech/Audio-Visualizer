@@ -7,9 +7,11 @@ public struct AudioVisualizerView: View {
     @State private var vm: AudioProcessingVM
     
     private let url: URL
+    private let fileName: String
     
-    public init(_ url: URL) {
+    public init(_ url: URL, fileName: String) {
         self.url = url
+        self.fileName = fileName
         
         self.vm = .init(url)
     }
@@ -99,7 +101,7 @@ public struct AudioVisualizerView: View {
             //                .tint(.secondary)
             //                .padding(.vertical)
             
-            Text(song ?? "Unknown Song")
+            Text(song ?? fileName)
                 .font(.title2)
                 .lineLimit(1)
             
