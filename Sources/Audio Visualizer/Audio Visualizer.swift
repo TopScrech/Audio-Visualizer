@@ -88,15 +88,27 @@ public struct AudioVisualizerView: View {
             Text(artist)
             
             HStack(spacing: 40) {
-                Image(systemName: "backward.fill")
+                Button {
+                    vm.resetAndPlayAudio()
+                } label: {
+                    Image(systemName: "backward.fill")
+                }
                 
-                Button(action: playButtonTapped) {
+                Button {
+                    playButtonTapped()
+                } label: {
                     Image(systemName: "\(isPlaying ? "pause" : "play").circle.fill")
                         .resizable()
                         .frame(width: 50, height: 50)
                 }
                 
-                Image(systemName: "forward.fill")
+                Button {
+                    
+                } label: {
+                    Image(systemName: "forward.fill")
+                        .foregroundStyle(.tertiary)
+                }
+                .disabled(true)
             }
             .padding(10)
             .foregroundColor(.secondary)
