@@ -49,9 +49,14 @@ final class AudioProcessingVM {
     }
     
     func resetAndPlayAudio() {
-        player.stop()
-        player.scheduleFile(audioFile, at: nil)
-        player.play()
+        if player.isPlaying {
+            player.stop()
+            player.scheduleFile(audioFile, at: nil)
+            player.play()
+        } else {
+            player.stop()
+            player.scheduleFile(audioFile, at: nil)
+        }
     }
     
     func fft(data: UnsafeMutablePointer<Float>, setup: OpaquePointer) -> [Float] {
