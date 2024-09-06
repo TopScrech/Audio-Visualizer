@@ -77,9 +77,9 @@ public struct AudioVisualizerView: View {
     
     var playerControls: some View {
         Group {
-            ProgressView(value: 0.4)
-                .tint(.secondary)
-                .padding(.vertical)
+            //            ProgressView(value: 0.4)
+            //                .tint(.secondary)
+            //                .padding(.vertical)
             
             Text(name)
                 .font(.title2)
