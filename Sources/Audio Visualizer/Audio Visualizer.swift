@@ -2,7 +2,7 @@ import SwiftUI
 import Charts
 import AVFoundation
 
-@available(iOS 17, *)
+@available(iOS 17, tvOS 17, *)
 public struct AudioVisualizerView: View {
     @State private var vm: AudioProcessingVM
     

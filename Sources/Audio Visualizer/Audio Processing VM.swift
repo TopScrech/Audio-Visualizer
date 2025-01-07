@@ -11,7 +11,7 @@ import Accelerate
  consider using something more robust, like the [AudioKit](https://audiokit.io/) framework.
  */
 
-@available(iOS 17, *)
+@available(iOS 17, tvOS 17, *)
 @Observable
 final class AudioProcessingVM {
     private let engine = AVAudioEngine()
