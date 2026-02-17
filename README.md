@@ -12,5 +12,3 @@ if let url = Bundle.main.url(forResource: "music", withExtension: "mp3") {
     }
 }
 ```
-[Watch Demo.mov](./Demo.mp4)
-## Demo
