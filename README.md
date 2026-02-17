@@ -1,3 +1,6 @@
+# Demo
+![Demo](Demo.gif)
+
 # Usage Example
 ```swift
 import AudioVisualizer
