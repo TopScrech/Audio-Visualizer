@@ -1,7 +1,11 @@
-# Demo
+# Audio Vosializer
 ![Demo](Demo.gif)
 
-# Usage Example
+## Supported platforms
+- iOS/iPadOS 17+
+- tvOS 17+
+
+## Usage Example
 ```swift
 import AudioVisualizer
 
