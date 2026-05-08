@@ -1,4 +1,4 @@
-# Audio Vosializer
+# Audio Мisualizer
 ![Demo](Demo.gif)
 
 ## Supported platforms
